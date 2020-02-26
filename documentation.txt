@@ -1,0 +1,12 @@
+CREATE DATABASE umuzi
+
+CREATE TABLE customer (
+  customerID INTEGER
+  FirstName VARCHAR(50)
+  LastName VARCHAR(50)
+  Gender VARCHAR(10)
+  Address VARCHAR(200)
+  Phone INTEGER
+)
+
+INSERT INTO customers VALUES (1,'Xolani','Mgube','Male','Katlehong 1431',0743240074)
