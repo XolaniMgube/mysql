@@ -1,6 +1,6 @@
 Creating the Customer Table
 create table Customers(
-  customerID serial primary key ,
+  customerID serial not null primary key ,
   FirstName varchar(50) not null,
   LastName varchar(50) not null,
   Gender varchar(10) not null,
@@ -14,7 +14,7 @@ create table Customers(
 
 Creating the Employees Table
 create table Employees(
-  EmployeeID serial primary key,
+  EmployeeID serial not null primary key,
   FirstName varchar(50) not null,
   LastName varchar(50) not null,
   Email varchar(100) not null,
@@ -24,11 +24,10 @@ create table Employees(
 
 Creating the Orders Table
 create table Orders(
-  OrderId serial primary key,
-  ProductID int references Products(ProductID),
-  PaymentID int references Payments(PaymentID),
-  unique(PaymentID),
-  FulfilledByEmployeeID int references Employees(EmployeeID),
+  OrderId serial not null primary key,
+  ProductID int not null,
+  PaymentID int not null,
+  FulfilledByEmployeeID int not null,
   DateRequired date not null,
   DateShipped date not null,
   Status varchar(20) not null
@@ -37,8 +36,8 @@ create table Orders(
 
 Creating the Payments Table
 create table Payments(
-  customerID int references customers(customerID),
-  PaymentID serial primary key,
+  customerID int not null,
+  PaymentID serial not null primary key,
   PaymentDate date not null,
   Amount decimal not null
 )
@@ -46,44 +45,18 @@ create table Payments(
 
 Creating the Products Table
 create table products(
-  ProductID serial primary key,
+  ProcuctID serial not null primary key,
   ProductName varchar(100) not null,
   Description varchar(300) not null,
   BuyPrice decimal not null
 )
 
-Inserting rows into Customers
-insert into customers (
-  firstname,
-  lastname,
-  gender,
-  address,
-  phone,
-  email,
-  city,
-  country
-) values(
-  'John',
-  'Hibert',
-  'Male',
-  '284 chaucer st',
-  '084789657',
-  'john@gmail.com',
-  'Johannesburg',
-  'South Africa"'
-)
 
 
-Inserting rows into employees
-insert into employees (
-  firstname,
-  lastname,
-  email,
-  jobtitle
-) 
-values(
-  'Kani',
-  'Matthew',
-  'mat@gmail.com',
-  'Manager'
+Orders table with foreign key
+create table Paymentssssss(
+  customerID int references customers(customerID),
+  PaymentID serial not null primary key,
+  PaymentDate date not null,
+  Amount decimal not null
 )
