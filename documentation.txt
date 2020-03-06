@@ -188,3 +188,13 @@ PART 2
 (5)delete from customers where customerid = 2
 (6)select count(*) from orders where status = 'Not shipped' 
    select count(*) from orders where status = 'Shipped'
+(7)select max(amount) from payments
+(8)select * from customers order by country
+(9)select * from products where buyprice between 100 and 600
+(10)select * from customers where country = 'Germany' and city = 'Berlin'
+(11)select * from customers where city = 'Durban' or city = 'Cape Town'
+(12)select * from products where buyprice > 500
+(13)select sum(amount) from payments
+(14)select count(*) from orders where status = 'Shipped'
+(15)In rands: select avg(buyprice) from products
+    In dollars: select avg(buyprice)*12 from products
