@@ -1,3 +1,10 @@
+Xolani Mgube
+SQL Postgres
+
+-------------------------------------
+PART 1
+-------------------------------------
+
 Creating the Customer Table
 create table Customers(
   customerID serial primary key ,
@@ -24,6 +31,8 @@ amount
   City varchar(20) not null,
   Country varchar(50) not null
 )
+
+
 
 
 Creating the Employees Table
@@ -54,7 +63,7 @@ create table Payments(
   customerID int references customers(customerID),
   PaymentID serial primary key,
   PaymentDate date not null,
-  Amount decimal not null
+  "Amount(R)" decimal not null
 )
 
 
@@ -63,8 +72,10 @@ create table products(
   ProductID serial primary key,
   ProductName varchar(100) not null,
   Description varchar(300) not null,
-  BuyPrice decimal not null
+  "BuyPrice (R)" decimal not null
 )
+
+
 
 Inserting rows into Customers
 insert into customers (
@@ -88,6 +99,7 @@ insert into customers (
 )
 
 
+
 Inserting rows into employees
 insert into employees (
   firstname,
@@ -101,6 +113,7 @@ values(
   'mat@gmail.com',
   'Manager'
 )
+
 
 
 inserting rows into the Orders Table
@@ -140,6 +153,7 @@ amount
 );
 
 
+
 Inserting data into the Products table
 insert into products(
 productname,
@@ -157,11 +171,11 @@ buyprice
 );
 
 
+
 Updating the Payments table
 update payments set customerid = 1 where paymentid = 1
 update payments set customerid = 5 where paymentid = 2
 update payments set customerid = 4 where paymentid = 3
-
 
 
 Updating the orders table
@@ -179,8 +193,10 @@ update orders set fulfilledbyemployeeid = 3 where orderid = 3
 
 
 
-
+---------------------------------------
 PART 2
+---------------------------------------
+
 (1)select * from customers
 (2)select firstname from customers
 (3)select firstname from customers where customerid = 1
@@ -198,3 +214,7 @@ PART 2
 (14)select count(*) from orders where status = 'Shipped'
 (15)In rands: select avg(buyprice) from products
     In dollars: select avg(buyprice)*12 from products
+(16)select * from customers
+    join payments on customers.customerid = payments.customerid
+(17)select * from products
+    where description like '%Turnable front wheels%'
