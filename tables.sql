@@ -1,12 +1,6 @@
-Xolani Mgube
-SQL Postgres
 
--------------------------------------
-PART 1
--------------------------------------
 
-Creating the Customer Table
----------------------------
+/*Creating the Customer Table*/
 create table Customers(
   customerID serial primary key
   FirstName varchar(50) not null,
@@ -22,8 +16,7 @@ create table Customers(
 
 
 
-Creating the Employees Table
-----------------------------
+/*Creating the Employees Table*/
 create table Employees(
   EmployeeID serial primary key,
   FirstName varchar(50) not null,
@@ -34,8 +27,7 @@ create table Employees(
 
 
 
-Creating the Orders Table
--------------------------
+/*Creating the Orders Table*/
 create table Orders(
   OrderId serial primary key,
   ProductID int references Products(ProductID),
@@ -49,8 +41,7 @@ create table Orders(
 
 
 
-Creating the Payments Table
----------------------------
+/*Creating the Payments Table*/
 create table Payments(
   customerID int references customers(customerID),
   PaymentID serial primary key,
@@ -59,8 +50,7 @@ create table Payments(
 )
 
 
-Creating the Products Table
----------------------------
+/*Creating the Products Table*/
 create table products(
   ProductID serial primary key,
   ProductName varchar(100) not null,
@@ -70,8 +60,7 @@ create table products(
 
 
 
-Inserting rows into Customers
------------------------------
+/*Inserting rows into Customers*/
 insert into customers (
   firstname,
   lastname,
@@ -94,8 +83,7 @@ insert into customers (
 
 
 
-Inserting rows into employees
------------------------------
+/*Inserting rows into employees*/
 insert into employees (
   firstname,
   lastname,
@@ -111,8 +99,7 @@ values(
 
 
 
-inserting rows into the Orders Table
-------------------------------------
+/*inserting rows into the Orders Table*/
 insert into payments(
 paymentdate,
 amount
@@ -131,8 +118,7 @@ amount
 
 
 
-Inserting data into the Payments table
---------------------------------------
+/*Inserting data into the Payments table*/
 insert into payments(
 paymentdate,
 amount
@@ -151,8 +137,7 @@ amount
 
 
 
-Inserting data into the Products table
---------------------------------------
+/*Inserting data into the Products table*/
 insert into products(
 productname,
 description,
@@ -170,15 +155,13 @@ buyprice
 
 
 
-Updating the Payments table
----------------------------
+/*Updating the Payments table*/
 update payments set customerid = 1 where paymentid = 1
 update payments set customerid = 5 where paymentid = 2
 update payments set customerid = 4 where paymentid = 3
 
 
-Updating the orders table
--------------------------
+/*Updating the orders table*/
 update orders set productid = 1 where orderid = 1
 update orders set productid = 1 where orderid = 2
 update orders set productid = 3 where orderid = 3
@@ -190,47 +173,3 @@ update orders set paymentid = 3 where orderid = 3
 update orders set fulfilledbyemployeeid = 2 where paymentid = 1
 update orders set fulfilledbyemployeeid = 2 where orderid = 2
 update orders set fulfilledbyemployeeid = 3 where orderid = 3
-
-
-
----------------------------------------
-PART 2
----------------------------------------
-
-(1)select * from customers
-
-(2)select firstname from customers
-
-(3)select firstname from customers where customerid = 1
-
-(4)update customers set firstname = 'lerato', lastname = 'mabitso' where customerid = 1
-
-(5)delete from customers where customerid = 2
-
-(6)select count(*) from orders where status = 'Not shipped' 
-   select count(*) from orders where status = 'Shipped'
-
-(7)select max(amount) from payments
-
-(8)select * from customers order by country
-
-(9)select * from products where buyprice between 100 and 600
-
-(10)select * from customers where country = 'Germany' and city = 'Berlin'
-
-(11)select * from customers where city = 'Durban' or city = 'Cape Town'
-
-(12)select * from products where buyprice > 500
-
-(13)select sum(amount) from payments
-
-(14)select count(*) from orders where status = 'Shipped'
-
-(15)In rands: select avg(buyprice) from products
-    In dollars: select avg(buyprice)*12 from products
-
-(16)select * from customers
-    join payments on customers.customerid = payments.customerid
-
-(17)select * from products
-    where description like '%Turnable front wheels%'
