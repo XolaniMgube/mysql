@@ -1,8 +1,8 @@
 
 
-/*Creating the Customer Table*/
+-- Creating the Customer Table
 create table Customers(
-  customerID serial primary key
+  customerID serial primary key,
   FirstName varchar(50) not null,
   LastName varchar(50) not null,
   Gender varchar(10) not null,
@@ -16,7 +16,7 @@ create table Customers(
 
 
 
-/*Creating the Employees Table*/
+-- Creating the Employees Table
 create table Employees(
   EmployeeID serial primary key,
   FirstName varchar(50) not null,
@@ -27,7 +27,7 @@ create table Employees(
 
 
 
-/*Creating the Orders Table*/
+-- Creating the Orders Table
 create table Orders(
   OrderId serial primary key,
   ProductID int references Products(ProductID),
@@ -41,7 +41,7 @@ create table Orders(
 
 
 
-/*Creating the Payments Table*/
+-- Creating the Payments Table
 create table Payments(
   customerID int references customers(customerID),
   PaymentID serial primary key,
@@ -50,7 +50,7 @@ create table Payments(
 )
 
 
-/*Creating the Products Table*/
+-- Creating the Products Table
 create table products(
   ProductID serial primary key,
   ProductName varchar(100) not null,
@@ -60,7 +60,7 @@ create table products(
 
 
 
-/*Inserting rows into Customers*/
+-- Inserting rows into Customers
 insert into customers (
   firstname,
   lastname,
@@ -83,7 +83,7 @@ insert into customers (
 
 
 
-/*Inserting rows into employees*/
+-- Inserting rows into employees
 insert into employees (
   firstname,
   lastname,
@@ -99,7 +99,7 @@ values(
 
 
 
-/*inserting rows into the Orders Table*/
+-- inserting rows into the Orders Table
 insert into payments(
 paymentdate,
 amount
@@ -118,7 +118,7 @@ amount
 
 
 
-/*Inserting data into the Payments table*/
+-- Inserting data into the Payments table
 insert into payments(
 paymentdate,
 amount
@@ -137,7 +137,7 @@ amount
 
 
 
-/*Inserting data into the Products table*/
+-- Inserting data into the Products table
 insert into products(
 productname,
 description,
@@ -155,13 +155,13 @@ buyprice
 
 
 
-/*Updating the Payments table*/
+-- Updating the Payments table
 update payments set customerid = 1 where paymentid = 1
 update payments set customerid = 5 where paymentid = 2
 update payments set customerid = 4 where paymentid = 3
 
 
-/*Updating the orders table*/
+-- Updating the orders table
 update orders set productid = 1 where orderid = 1
 update orders set productid = 1 where orderid = 2
 update orders set productid = 3 where orderid = 3
